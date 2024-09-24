@@ -1,8 +1,8 @@
 #ifndef GCD_H
 #define GCD_H
 
-int gcd(int a, int b);
+long long gcd(long long a, long long b);
 
-int extended_gcd(int a, int b, int *x);
+long long extended_gcd(long long a, long long b, long long *x);
 
 #endif // GCD_H

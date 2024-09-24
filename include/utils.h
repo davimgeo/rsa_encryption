@@ -1,8 +1,8 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-int find_e(int phi);
-int find_d(int e, int phi);
-int mod_exp(int base, int exp, int mod);
+long long find_e(long long phi);
+long long find_d(long long e, long long phi);
+long long mod_exp(long long base, long long exp, long long mod);
 
 #endif // UTILS_H

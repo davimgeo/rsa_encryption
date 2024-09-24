@@ -1,16 +1,18 @@
 #include <stdio.h>
 #include "../include/gcd.h"
 
-void print_parameters(int p, int q, int e, int d, int phi, int x, int m, int crypto_msg, int decrypto_msg)
+void print_parameters(long long p, long long q, long long e, long long d, long long phi, long long x, long long m, long long crypto_msg, long long decrypto_msg)
 {
-    printf("\tDebug Information:");
-    printf("p: %d\nq: %d\n", p, q);
-    printf("e: %d\n", e);
-    printf("d: %d\n", d);
-    printf("ext_gcd: %d\n", extended_gcd(e, phi, &x));
-    printf("x0 value: %d\n", x);
-    printf("Mensagem original: %d\n", m);
-    printf("Mensagem criptografada: %d\n", crypto_msg);
-    printf("Mensagem descriptografada: %d\n", decrypto_msg);  
-    printf("\n======================================\n");
+    printf("======================================\n");
+    printf("\tDebug Information:\n");
+    printf("p: %lld\nq: %lld\n", p, q);
+    printf("e: %lld\n", e);
+    printf("phi: %lld\n", phi);
+    printf("d: %lld\n", d);
+    printf("ext_gcd: %lld\n", extended_gcd(e, phi, &x));
+    printf("x0 value: %lld\n", x);
+    printf("Mensagem original: %lld\n", m);
+    printf("Mensagem criptografada: %lld\n", crypto_msg);
+    printf("Mensagem descriptografada: %lld\n", decrypto_msg);  
+    printf("======================================\n");
 }

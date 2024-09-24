@@ -1,9 +1,9 @@
 #include "../include/utils.h"
 #include "../include/gcd.h"
 
-int find_e(int phi)
+long long find_e(long long phi)
 {
-    int e = 2;
+    long long e = 2;
     while (gcd(e, phi) != 1 && e < phi)
     {
         e++;
@@ -11,10 +11,10 @@ int find_e(int phi)
     return e;
 }
 
-int find_d(int e, int phi)
+long long find_d(long long e, long long phi)
 {
-    int x;
-    int gcd = extended_gcd(e, phi, &x);
+    long long x;
+    long long gcd = extended_gcd(e, phi, &x);
     if (gcd != 1)
     {
         return -1;
@@ -22,9 +22,9 @@ int find_d(int e, int phi)
     return ((x % phi) + phi) % phi;
 }
 
-int mod_exp(int base, int exp, int mod)
+long long mod_exp(long long base, long long exp, long long mod)
 {
-    int result = 1;
+    long long result = 1;
     base = base % mod;
     while (exp > 0)
     {

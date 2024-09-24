@@ -6,29 +6,45 @@
 
 int main(int argc, char *argv[])
 {
-    int p = 41;
-    int q = 97;
 
-    int n = p * q;
+    FILE *pq = fopen("data/inputs/pq.txt", "r");
+    if (pq == NULL) 
+    {
+        printf("Could not open the file!\n");
+        return 1;   
+    }
 
-    int phi = (p - 1) * (q - 1);
+    long long read_p, read_q;
+    if (fscanf(pq, "%lld %lld", &read_p, &read_q) != 2) 
+    {
+        printf("Error reading pq file!\n");
+        fclose(pq);
+        return 1; 
+    }
 
-    int e = find_e(phi);
-    int d = find_d(e, phi);
-    int x;
+    long long p = read_p;
+    long long q = read_q;
+
+    long long n = p * q;
+
+    long long phi = (p - 1) * (q - 1);
+
+    long long e = 65537;
+    long long d = find_d(e, phi);
+    long long x;
 
     export_rsa_pub_key(e, n);
     export_rsa_priv_key(d, n); 
 
-    FILE *id_rsa_pub = fopen("data/id_rsa_pub.txt", "r");
+    FILE *id_rsa_pub = fopen("data/outputs/id_rsa_pub.txt", "r");
     if (id_rsa_pub == NULL) 
     {
         printf("Error opening public key file!\n");
         return 1;   
     }
 
-    int read_e, read_n;
-    if (fscanf(id_rsa_pub, "%d %d", &read_e, &read_n) != 2) 
+    long long read_e, read_n;
+    if (fscanf(id_rsa_pub, "%lld %lld", &read_e, &read_n) != 2) 
     {
         printf("Error reading public key values!\n");
         fclose(id_rsa_pub);
@@ -37,10 +53,10 @@ int main(int argc, char *argv[])
 
     fclose(id_rsa_pub);
 
-    int m = 150;
+    long long m = 1050;
 
-    int crypto_msg = rsa_pub(m, read_e, read_n);
-    int decrypto_msg = rsa_priv(crypto_msg, d, n);
+    long long crypto_msg = rsa_pub(m, read_e, read_n);
+    long long decrypto_msg = rsa_priv(crypto_msg, d, n);
 
     //remember to put a flag to debug
     print_parameters(p, q, e, d, phi, x, m, crypto_msg, decrypto_msg);

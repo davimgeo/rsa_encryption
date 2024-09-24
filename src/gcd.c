@@ -1,27 +1,27 @@
 #include "../include/gcd.h"
 
-int gcd(int a, int b)
+long long gcd(long long a, long long b)
 {
     while (b != 0)
     {
-        int temp = b;
+        long long temp = b;
         b = a % b;
         a = temp;
     }
     return a;
 }
 
-int extended_gcd(int a, int b, int *x)
+long long extended_gcd(long long a, long long b, long long *x)
 {
-    int x0 = 1, x1 = 0;
+    long long x0 = 1, x1 = 0;
     while (b != 0)
     {
-        int q = a / b;
-        int temp = b;
+        long long q = a / b;
+        long long temp = b;
         b = a % b;
         a = temp;
 
-        int tempX = x1;
+        long long tempX = x1;
         x1 = x0 - q * x1;
         x0 = tempX;
     }
