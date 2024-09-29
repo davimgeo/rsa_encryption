@@ -1,12 +1,12 @@
 #include "../include/utils.h"
 
-long long rsa_pub(long long m, long long e, long long n)
+long long rsaPub(long long m, long long e, long long n)
 {
-    return mod_exp(m, e, n);
+    return modExp(m, e, n);
 }
 
-long long rsa_priv(long long m, long long d, long long n)
+long long rsaPriv(long long m, long long d, long long n)
 {
-    return mod_exp(m, d, n);
+    return modExp(m, d, n);
 }
 

@@ -1,7 +1,7 @@
 #include "../include/utils.h"
 #include "../include/gcd.h"
 
-long long find_e(long long phi)
+long long findE(long long phi)
 {
     long long e = 2;
     while (gcd(e, phi) != 1 && e < phi)
@@ -11,10 +11,10 @@ long long find_e(long long phi)
     return e;
 }
 
-long long find_d(long long e, long long phi)
+long long findD(long long e, long long phi)
 {
     long long x;
-    long long gcd = extended_gcd(e, phi, &x);
+    long long gcd = extendedGcd(e, phi, &x);
     if (gcd != 1)
     {
         return -1;
@@ -22,7 +22,7 @@ long long find_d(long long e, long long phi)
     return ((x % phi) + phi) % phi;
 }
 
-long long mod_exp(long long base, long long exp, long long mod)
+long long modExp(long long base, long long exp, long long mod)
 {
     long long result = 1;
     base = base % mod;

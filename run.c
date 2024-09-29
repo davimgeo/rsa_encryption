@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include "../include/utils.h"
-#include "../include/gen_key.h"
-#include "../include/print_parameters.h"
-#include "../include/rsa_gen.h"
+#include "include/utils.h"
+#include "include/gen_key.h"
+#include "include/print_parameters.h"
+#include "include/rsa_gen.h"
 
 int main(int argc, char *argv[])
 {
@@ -30,11 +30,11 @@ int main(int argc, char *argv[])
     long long phi = (p - 1) * (q - 1);
 
     long long e = 65537;
-    long long d = find_d(e, phi);
+    long long d = findD(e, phi);
     long long x;
 
-    export_rsa_pub_key(e, n);
-    export_rsa_priv_key(d, n); 
+    exportRsaPubKey(e, n);
+    exportRsaPrivKey(d, n); 
 
     FILE *id_rsa_pub = fopen("data/outputs/id_rsa_pub.txt", "r");
     if (id_rsa_pub == NULL) 
@@ -55,13 +55,12 @@ int main(int argc, char *argv[])
 
     long long m = 1050;
 
-    long long crypto_msg = rsa_pub(m, read_e, read_n);
-    long long decrypto_msg = rsa_priv(crypto_msg, d, n);
+    long long crypto_msg = rsaPub(m, read_e, read_n);
+    long long decrypto_msg = rsaPriv(crypto_msg, d, n);
 
     //remember to put a flag to debug
-    print_parameters(p, q, e, d, phi, x, m, crypto_msg, decrypto_msg);
-
-    
+    printParameters(p, q, e, d, phi, x, m, crypto_msg, decrypto_msg);
 
     return 0;
 }
+
